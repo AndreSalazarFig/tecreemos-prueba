@@ -1,0 +1,44 @@
+﻿@model TransaccionVM
+@using ControlCuentasAhorro.Domain.Enums
+@{
+    ViewData["Title"] = "Nueva transacción";
+}
+
+<h3>@ViewData["Title"] - @Model.NombreCliente - @Model.NumeroCuenta</h3>
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert" @(ViewBag.Message == null ? "style=display:none" : "")>
+    @(ViewBag.Message != null ? ViewBag.Message : "")
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <form asp-action="Nueva" asp-controller="Transaccion" method="post">
+            @Html.HiddenFor(x => x.IdCliente)
+            @Html.HiddenFor(x => x.NombreCliente)
+            @Html.HiddenFor(x => x.NumeroCuenta)
+            @Html.HiddenFor(x => x.IdCuentaAhorro)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Monto)
+                @Html.TextBoxFor(x => x.Monto, htmlAttributes: new { @class = "form-control", @type = "number", @step = "0.01", @min = "0.01" })
+                @Html.ValidationMessageFor(x => x.NumeroCuenta)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.IdTipoOperacion)
+                <br />
+                @Html.Label("OperacionDeposito", "Depósito")
+                @Html.RadioButtonFor(x => x.IdTipoOperacion, (int)EnumTipoOperacionCuentaAhorro.Deposito, new { @id = "OperacionDeposito" })
+                
+                @Html.Label("OperacionRetiro", "Retiro")
+                @Html.RadioButtonFor(x => x.IdTipoOperacion, (int)EnumTipoOperacionCuentaAhorro.Retiro, new { @id = "OperacionRetiro" })
+                <br />
+                @Html.ValidationMessageFor(x => x.IdTipoOperacion)
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlCuentasAhorro", "ControlCuentasAhorro\ControlCuentasAhorro.csproj", "{2243697F-CDF3-4010-BEA2-997512BDDC47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2243697F-CDF3-4010-BEA2-997512BDDC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2243697F-CDF3-4010-BEA2-997512BDDC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2243697F-CDF3-4010-BEA2-997512BDDC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2243697F-CDF3-4010-BEA2-997512BDDC47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BE0DAD8-CC9D-42B0-A49F-DAAD8A296715}
+	EndGlobalSection
+EndGlobal

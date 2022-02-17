@@ -1,0 +1,43 @@
+﻿@model ClienteVM
+@{
+    ViewData["Title"] = "Crear cliente";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert" @(ViewBag.Message == null ? "style=display:none" : "")>
+    @(ViewBag.Message != null ? ViewBag.Message : "")
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <form asp-action="Crear" asp-controller="Cliente" method="post">
+            <div class="form-group">
+                @Html.LabelFor(x => x.Nombre)
+                @Html.TextBoxFor(x => x.Nombre, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Nombre)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.ApellidoPaterno)
+                @Html.TextBoxFor(x => x.ApellidoPaterno, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ApellidoPaterno)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.ApellidoMaterno)
+                @Html.TextBoxFor(x => x.ApellidoMaterno, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.ApellidoMaterno)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.NumeroCliente)
+                @Html.TextBoxFor(x => x.NumeroCliente, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.NumeroCliente)
+            </div>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </form>
+    </div>
+</div>

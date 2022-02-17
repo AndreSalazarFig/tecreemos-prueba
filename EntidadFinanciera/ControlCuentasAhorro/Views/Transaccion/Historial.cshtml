@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HistorialTransaccionVM>
+@using ControlCuentasAhorro.Domain.Enums
+@{
+    ViewData["Title"] = "Historial de transacciones";
+}
+
+<h3>@ViewData["Title"] - @ViewBag.NombreCliente - @ViewBag.NumeroCuenta</h3>
+
+<div class="row">
+    <div class="col-12">
+        <a href="@Url.Action("Gestionar", "CuentaAhorro", new { idcliente = ViewBag.IdCliente })" class="btn btn-success float-right">Regresar al listado de cuentas</a>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <table id="tblTransacciones" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Tipo de operación</th>
+                    <th>Monto</th>
+                    <th>Saldo anterior</th>
+                    <th>Saldo actual</th>
+                    <th>Fecha de operación</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    @foreach (var transaccion in Model)
+                    {
+                        <tr>
+                            <td>@(((EnumTipoOperacionCuentaAhorro)transaccion.IdTipoOperacion).ToString())</td>
+                            <td>@transaccion.Monto.ToString("C")</td>
+                            <td>@transaccion.SaldoAnterior.ToString("C")</td>
+                            <td>@transaccion.SaldoActual.ToString("C")</td>
+                            <td>@transaccion.FechaOperacion.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center">No se encontraron datos</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

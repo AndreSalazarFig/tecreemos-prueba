@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CuentaAhorroVM>
+@{
+    ViewData["Title"] = "Lista de cuentas de ahorro";
+
+}
+
+<h3>@ViewData["Title"] - @ViewBag.NombreCliente</h3>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert" @(ViewBag.Message == null ? "style=display:none" : "")>
+    @(ViewBag.Message != null ? ViewBag.Message : "")
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <a href="@Url.Action("Crear", "CuentaAhorro", new { idcliente = ViewBag.IdCliente })" class="btn btn-success float-right">Agregar nueva</a>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-12">
+        <table id="tblCuentas" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Número de cuenta</th>
+                    <th>Saldo actual</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+                    @foreach (var cuenta in Model)
+                    {
+                        <tr>
+                            <td>@cuenta.NumeroCuenta</td>
+                            <td>@cuenta.SaldoActual.ToString("C")</td>
+                            <td>
+                                <a href="@Url.Action("Editar", "CuentaAhorro", new { idcuenta = cuenta.IdCuentaAhorro })" class="btn btn-sm btn-primary">Editar</a>
+                                <a href="@Url.Action("Nueva", "Transaccion", new { idcuenta = cuenta.IdCuentaAhorro })" class="btn btn-sm btn-primary">Realizar transacción</a>
+                                <a href="@Url.Action("Historial", "Transaccion", new { idcuenta = cuenta.IdCuentaAhorro })" class="btn btn-sm btn-primary">Historial de transacciones</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">No se encontraron datos</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
